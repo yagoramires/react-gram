@@ -7,8 +7,8 @@ const photoSchema = new Schema(
     title: String,
     likes: Array,
     comments: Array,
-    userName: String,
     userId: mongoose.ObjectId, // Objeto especial do mongoose
+    userName: String,
   },
   {
     timestamps: true,
