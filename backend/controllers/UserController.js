@@ -3,6 +3,7 @@ const User = require('../models/User'); // Importa o model do usuário
 const bcrypt = require('bcryptjs'); // Importa o bcrypt
 
 const jwt = require('jsonwebtoken'); // Importa o json web token
+const mongoose = require('mongoose');
 
 const jwtSecret = process.env.JWT_SECRET; // Importa o secret do .env
 
@@ -71,14 +72,63 @@ const login = async (req, res) => {
   } // Se a senha estiver incorreta irá retornar o erro
 
   // Caso esteja tudo certo, retorna o usuário e o token
-  res.status(200).json({
+  res.status(201).json({
     _id: user.id,
     profileImage: user.profileImage,
     token: generateToken(user._id),
   }); // Se o usuário foi validado com sucesso, retorna o id, imagem de perfil e token
 };
 
+// Pegar usuário logado
+const getCurrentUser = async (req, res) => {
+  const user = req.user; // Usuário passado no middleware de Auth
+
+  res.status(200).json(user);
+};
+
+// Update de usuário
+const update = async (req, res) => {
+  const { name, password, bio } = req.body; // Traz os dados do corpo da requisição
+
+  let profileImage = null; // Define a imagem de perfil como null
+
+  if (req.file) {
+    profileImage = req.file.filename; // Se houver imagem, irá pegar o endereço da imagem
+  }
+
+  const reqUser = req.user; // Pega o usuário da requisição
+
+  const user = await User.findById(mongoose.Types.ObjectId(reqUser._id)).select(
+    '-password',
+  );
+
+  if (name) {
+    user.name = name;
+  }
+
+  if (password) {
+    // Gerar hash de senha (SEGURANÇA)
+    const salt = await bcrypt.genSalt(); // Polui a string da senha
+    const passwordHash = await bcrypt.hash(password, salt); // Gera uma senha aleatória para o sistema
+
+    user.password = passwordHash;
+  }
+
+  if (profileImage) {
+    user.profileImage = profileImage;
+  }
+
+  if (bio) {
+    user.bio = bio;
+  }
+
+  await user.save();
+  res.status(200).json(user);
+};
+
 module.exports = {
   register,
   login,
+  getCurrentUser,
+  update,
 };
