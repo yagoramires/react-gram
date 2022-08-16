@@ -48,9 +48,37 @@ const register = async (req, res) => {
   res.status(201).json({
     _id: newUser.id,
     token: generateToken(newUser._id),
-  }); // Se o usuário foi criado com sucesso, retorna o token
+  }); // Se o usuário foi criado com sucesso, retorna o id e o token
+};
+
+// Entrando com usuário
+const login = async (req, res) => {
+  const { email, password } = req.body;
+
+  const user = await User.findOne({ email });
+
+  // Checando se o usuário existe
+  if (!user) {
+    res.status(404).json({ errors: ['Usuário não encontrado.'] });
+    return; // Se o usuário não existir irá retornar o erro
+  }
+
+  // Checar se a senha combina
+  if (!(await bcrypt.compare(password, user.password))) {
+    // Método do bcrypt para validar a senha
+    res.status(422).json({ errors: ['Senha inválida.'] });
+    return;
+  } // Se a senha estiver incorreta irá retornar o erro
+
+  // Caso esteja tudo certo, retorna o usuário e o token
+  res.status(200).json({
+    _id: user.id,
+    profileImage: user.profileImage,
+    token: generateToken(user._id),
+  }); // Se o usuário foi validado com sucesso, retorna o id, imagem de perfil e token
 };
 
 module.exports = {
   register,
+  login,
 };

@@ -10,10 +10,14 @@ const connection = async () => {
       `mongodb+srv://${dbUser}:${dbPassword}@reactgram.7xfckni.mongodb.net/?retryWrites=true&w=majority`,
     ); // conexao com banco de dados
 
+    console.log('conectado com o db');
+
     return dbConnection;
   } catch (error) {
     console.log(error);
   }
 };
+
+connection();
 
 module.exports = connection;
