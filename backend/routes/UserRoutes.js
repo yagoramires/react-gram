@@ -7,6 +7,7 @@ const {
   login,
   getCurrentUser,
   update,
+  getUserById,
 } = require('../controllers/UserController');
 
 // Middlewares
@@ -34,5 +35,6 @@ router.put(
   imageUpload.single('profileImage'),
   update,
 ); // Rota, middleware e funcao
+router.get('/:id', getUserById); // Rota sem middleware, pois qualquer pessoa pode ver o perfil de um usuário
 
 module.exports = router;
