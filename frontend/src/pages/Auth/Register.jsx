@@ -1,8 +1,10 @@
 import { Link } from 'react-router-dom';
-// Components
+// Redux
+import { register, reset } from '../../slices/authSlice'
 
 // Hooks
 import { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 
 // Styles
 import './Auth.css';
@@ -12,6 +14,10 @@ const Register = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+
+  const dispatch = useDispatch()
+
+  const  { loading , error } = useSelector((state) => state.auth)
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -35,28 +41,28 @@ const Register = () => {
         <input
           type='text'
           name='name'
-          value={name}
+          value={name || ''}
           onChange={(e) => setName(e.target.value)}
           placeholder='Nome'
         />
         <input
           type='email'
           name='email'
-          value={email}
+          value={email || ''}
           onChange={(e) => setEmail(e.target.value)}
           placeholder='E-mail'
         />
         <input
           type='password'
           name='password'
-          value={password}
+          value={password || ''}
           onChange={(e) => setPassword(e.target.value)}
           placeholder='Senha'
         />
         <input
           type='password'
           name='confirmPassword'
-          value={confirmPassword}
+          value={confirmPassword || ''}
           onChange={(e) => setConfirmPassword(e.target.value)}
           placeholder='Confirme a senha'
         />
