@@ -1,5 +1,7 @@
-export const api = 'http://localhost:5000/api';
-export const uploads = 'http://localhost:5000/uploads';
+export const api = 'http://localhost:5000/api'; // URL da API
+export const uploads = 'http://localhost:5000/uploads'; // URL das imagens
+
+// Essa config serve para lidar com todos os metodos recebidos na requisição
 
 export const requestConfig = (method, data, token = null, image = null) => {
   let config;

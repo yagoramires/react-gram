@@ -2,6 +2,8 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
 import authService from '../services/authService';
 
+// slice serve para gerenciar os estados
+
 const user = JSON.parse(localStorage.getItem('user')); // Busca o token do usuário salvo no local storage, se houver
 
 const initialState = {
@@ -25,7 +27,22 @@ export const register = createAsyncThunk(
     }
 
     return data; // Se funcionar, irá retornar o usuário cadastrado
-  }
+  },
+);
+
+export const login = createAsyncThunk(
+  'auth/login', // 1° argumento: Nome da função (Entidade(auth) e ação(login) por convenção)
+  async (user, thunkAPI) => {
+    // 2° argumento: Função
+    const data = await authService.login(user); // Tenta fazer o cadastro do usuário passado pelo formulário enviado, utilizando a função authService
+
+    // Checagem de erros
+    if (data.errors) {
+      return thunkAPI.rejectWithValue(data.errors[0]); // Se der erro, irá retornar o primeiro item do array de erros
+    }
+
+    return data; // Se funcionar, irá retornar o usuário cadastrado
+  },
 );
 
 export const authSlice = createSlice({

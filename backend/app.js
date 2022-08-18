@@ -13,7 +13,7 @@ app.use(express.json()); // Middleware do express para habilitar JSON
 app.use(express.urlencoded({ extended: false })); // Middleware do express para lidar com url, com extended false para aceitar o form data
 
 // Resolver CORS
-app.use(cors({ credentials: true, origin: 'http://localhost:3000/' })); // Permite que recursos restritos em uma página da web sejam recuperados por outro dominio
+app.use(cors({ credentials: true, origin: 'http://localhost:3000' })); // Permite que recursos restritos em uma página da web sejam recuperados por outro dominio
 
 // Pasta de Uploads(imagens)
 app.use('/uploads', express.static(path.join(__dirname, '/uploads'))); // '/uploads' nome da pasta | express.static - arquivos estaticos | path.join junta o nome do caminho com o nome da pasta

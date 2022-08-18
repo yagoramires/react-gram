@@ -3,8 +3,8 @@ import ReactDOM from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 
 // Redux
-import { Provider } from 'react-redux';
-import { store } from './store';
+import { Provider } from 'react-redux'; // Similar ao context, entrega o conteúdo do Redux.
+import { store } from './store'; // Onde os dados ficam guardados
 
 import App from './App';
 
@@ -18,5 +18,5 @@ root.render(
         <App />
       </Provider>
     </BrowserRouter>
-  </React.StrictMode>
+  </React.StrictMode>,
 );
