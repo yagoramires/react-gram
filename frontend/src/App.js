@@ -27,11 +27,11 @@ function App() {
           />
           <Route
             path='/login'
-            element={auth ? <Navigate to='/home' /> : <Login />}
+            element={auth ? <Navigate to='/' /> : <Login />}
           />
           <Route
             path='/register'
-            element={auth ? <Navigate to='/home' /> : <Register />}
+            element={auth ? <Navigate to='/' /> : <Register />}
           />
         </Routes>
       </div>

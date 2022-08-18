@@ -88,6 +88,23 @@ export const authSlice = createSlice({
         state.error = null;
         state.success = true; // definem os estados
         state.user = null; // define a ação
+      })
+      .addCase(login.pending, (state) => {
+        // se a req estiver pendente
+        state.loading = true;
+        state.error = false;
+      })
+      .addCase(login.fulfilled, (state, action) => {
+        // se a req for executada com sucesso, passando o estado e uma ação
+        state.loading = false;
+        state.error = null;
+        state.success = true; // definem os estados
+        state.user = action.payload; // define a ação
+      })
+      .addCase(login.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload; // pega o erro
+        state.user = null; // nao tem usuário, então ele é anulado
       });
   },
 });
