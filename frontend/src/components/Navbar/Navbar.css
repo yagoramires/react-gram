@@ -13,16 +13,16 @@
 }
 
 .nav-form svg {
-position: absolute;
-top: 10px;
-left: 9px;
+  position: absolute;
+  top: 10px;
+  left: 9px;
 }
 
 .nav-form input {
-padding-left: 2.5rem;
-border-radius: 5px;
-width: 100%;
-margin: 0;
+  padding-left: 2.5rem;
+  border-radius: 5px;
+  width: 100%;
+  margin: 0;
 }
 
 .nav-links {
@@ -30,8 +30,9 @@ margin: 0;
   align-items: center;
   list-style-type: none;
   gap: 1rem;
+  cursor: pointer;
 }
 
-.nav-links svg{
+.nav-links svg {
   font-size: 1.4rem;
 }

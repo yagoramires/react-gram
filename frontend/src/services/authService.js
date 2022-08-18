@@ -20,6 +20,10 @@ const register = async (data) => {
   }
 };
 
+const logout = () => {
+  localStorage.removeItem('user');
+};
+
 const login = async (data) => {
   const config = await requestConfig('POST', data);
 
@@ -40,6 +44,7 @@ const login = async (data) => {
 
 const authService = {
   register,
+  logout,
   login,
 };
 

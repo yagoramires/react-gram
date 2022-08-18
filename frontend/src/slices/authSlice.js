@@ -30,6 +30,10 @@ export const register = createAsyncThunk(
   },
 );
 
+export const logout = createAsyncThunk('auth/logout', async () => {
+  await authService.logout();
+});
+
 export const login = createAsyncThunk(
   'auth/login', // 1° argumento: Nome da função (Entidade(auth) e ação(login) por convenção)
   async (user, thunkAPI) => {
@@ -69,7 +73,7 @@ export const authSlice = createSlice({
       .addCase(register.fulfilled, (state, action) => {
         // se a req for executada com sucesso, passando o estado e uma ação
         state.loading = false;
-        state.error = false;
+        state.error = null;
         state.success = true; // definem os estados
         state.user = action.payload; // define a ação
       })
@@ -77,6 +81,13 @@ export const authSlice = createSlice({
         state.loading = false;
         state.error = action.payload; // pega o erro
         state.user = null; // nao tem usuário, então ele é anulado
+      })
+      .addCase(logout.fulfilled, (state) => {
+        // se a req for executada com sucesso, passando o estado e uma ação
+        state.loading = false;
+        state.error = null;
+        state.success = true; // definem os estados
+        state.user = null; // define a ação
       });
   },
 });
