@@ -1,4 +1,4 @@
-import { useState } from 'react';
+// import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useAuth } from '../../hooks/useAuth';
 import { NavLink, Link, useNavigate } from 'react-router-dom';
@@ -47,13 +47,13 @@ const Navbar = () => {
             {user && (
               <li>
                 <NavLink to={`/users/${user._id}`}>
-                  <BsPersonFill />
+                  <BsCameraFill />
                 </NavLink>
               </li>
             )}
             <li>
-              <NavLink to='/'>
-                <BsCameraFill />
+              <NavLink to='/profile'>
+                <BsPersonFill />
               </NavLink>
             </li>
             <li>

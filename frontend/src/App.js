@@ -7,11 +7,11 @@ import Footer from './components/Footer/Footer';
 import Home from './pages/Home/Home';
 import Login from './pages/Auth/Login';
 import Register from './pages/Auth/Register';
+import EditProfile from './pages/EditProfile/EditProfile';
 
 function App() {
   const { auth, loading } = useAuth();
 
-  console.log(loading);
   if (loading) {
     return <p>Carregando ...</p>;
   }
@@ -26,12 +26,16 @@ function App() {
             element={auth ? <Home /> : <Navigate to='/login' />}
           />
           <Route
+            path='/profile'
+            element={auth ? <EditProfile /> : <Navigate to='/login' />}
+          />
+          <Route
             path='/login'
-            element={auth ? <Navigate to='/' /> : <Login />}
+            element={!auth ? <Login /> : <Navigate to='/' />}
           />
           <Route
             path='/register'
-            element={auth ? <Navigate to='/' /> : <Register />}
+            element={!auth ? <Register /> : <Navigate to='/' />}
           />
         </Routes>
       </div>
