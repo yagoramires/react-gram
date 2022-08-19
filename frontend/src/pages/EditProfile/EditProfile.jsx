@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import { uploads } from '../../utils/config';
 
-import { profile, resetMessage } from '../../slices/userSlice';
+import { profile, resetMessage, updateProfile } from '../../slices/userSlice';
 
 import Message from '../../components/Message/Message';
 
@@ -32,19 +32,42 @@ const EditProfile = () => {
     }
   }, [user]);
 
-  console.log(user);
-
   const handleFile = (e) => {
-    //Image preview
-
     const image = e.target.files[0];
 
     setPreviewImage(image);
+    //Image preview
     setProfileImage(image);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    const userData = {
+      name,
+    };
+
+    if (profileImage) {
+      userData.profileImage = profileImage;
+    }
+
+    if (bio) {
+      userData.bio = bio;
+    }
+
+    if (password) {
+      userData.password = password;
+    }
+
+    //form data
+    const formData = new FormData();
+
+    Object.keys(userData).forEach((key) => formData.append(key, userData[key]));
+
+    dispatch(updateProfile(formData));
+
+    setTimeout(() => {
+      dispatch(resetMessage());
+    }, 2000);
   };
 
   return (
@@ -95,7 +118,10 @@ const EditProfile = () => {
             onChange={(e) => setPassword(e.target.value)}
           />
         </label>
-        <input type='submit' value='Atualizar' />
+        {!loading && <input type='submit' value='Atualizar' />}
+        {loading && <input type='submit' value='Aguarde ...' disabled />}
+        {error && <Message msg={error} type='error' />}
+        {message && <Message msg={message} type='success' />}
       </form>
     </div>
   );
