@@ -1,0 +1,20 @@
+.like {
+    display: flex;
+    align-items: center;
+    border-top: 1px solid #363636;
+    border-bottom: 1px solid #363636;
+    padding: .5rem;
+}
+
+.home .like {
+    border: none;
+}
+
+.like svg {
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+.like p {
+    margin-left: 1rem;
+}

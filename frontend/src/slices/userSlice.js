@@ -37,6 +37,15 @@ export const updateProfile = createAsyncThunk(
   },
 );
 
+export const getUserDetails = createAsyncThunk(
+  'user/get',
+  async (id, thunkAPI) => {
+    const data = await userService.getUserDetails(id);
+
+    return data;
+  },
+);
+
 export const userSlice = createSlice({
   name: 'user',
   initialState,
@@ -76,6 +85,18 @@ export const userSlice = createSlice({
         state.loading = false;
         state.error = action.payload; // pega o erro
         state.user = {}; // nao tem usuário, então ele é anulado
+      })
+      .addCase(getUserDetails.pending, (state) => {
+        // se a req estiver pendente
+        state.loading = true;
+        state.error = false;
+      })
+      .addCase(getUserDetails.fulfilled, (state, action) => {
+        // se a req for executada com sucesso, passando o estado e uma ação
+        state.loading = false;
+        state.error = null;
+        state.success = true; // definem os estados
+        state.user = action.payload; // define a ação
       });
   },
 });
