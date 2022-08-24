@@ -1,8 +1,7 @@
 <div align="center" >
 <img  src="./frontend/src/assets/logo-react-gram.png" alt='ReactGram' />
-</div>
-
 <p>In this code challenge i built an fullstack Instagram Clone, with MERN.</p>
+</div>
 
 <p align="center">
 <img src="./frontend/src/assets/readme.gif" title="App demo" alt='App demo' />
