@@ -1,4 +1,4 @@
-<img src="./frontend/src/assets/logo-react-gram.png" alt='ReactGram' />
+<img align='center' src="./frontend/src/assets/logo-react-gram.png" alt='ReactGram' />
 
 <p>In this code challenge i built an fullstack Instagram Clone, with MERN.</p>
 
