@@ -13,10 +13,13 @@ import {
 } from 'react-icons/bs';
 
 import './Navbar.css';
+import { useState } from 'react';
 
 const Navbar = () => {
   const { auth } = useAuth();
   const { user } = useSelector((state) => state.auth);
+
+  const [query, setQuery] = useState();
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -28,12 +31,25 @@ const Navbar = () => {
     navigate('/login');
   };
 
+  const handleSearch = (e) => {
+    e.preventDefault();
+
+    if (query) {
+      return navigate(`/search?q=${query}`);
+    }
+  };
+
   return (
     <header className='header'>
       <Link to='/'>ReactGram</Link>
-      <form className='nav-form'>
+      <form className='nav-form' onSubmit={handleSearch}>
         <BsSearch color='white' />
-        <input type='text' placeholder='Pesquisar' />
+        <input
+          type='text'
+          placeholder='Pesquisar'
+          value={query || ''}
+          onChange={(e) => setQuery(e.target.value)}
+        />
       </form>
       <ul className='nav-links'>
         {auth ? (

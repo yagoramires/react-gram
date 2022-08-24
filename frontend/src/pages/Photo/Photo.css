@@ -1,7 +1,13 @@
 .photo-container {
-    width: 50%;
+    width: 90%;
     margin: 2rem auto;
     text-align: center;
+}
+
+@media (min-width: 768px) {
+    .photo-container {
+        width: 50%;
+    }
 }
 
 .photo-container h2 {
@@ -18,13 +24,14 @@
 
 .comments form {
     margin-bottom: 2rem;
-    padding-bottom: 1rem;
+    padding: 1rem 0;
     border-bottom: 1px solid #363636;
 }
 
 .author {
     display: flex;
     font-weight: bold;
+    align-items: center;
 }
 
 .photo-container .author img {
@@ -32,4 +39,8 @@
     height: 50px;
     border-radius: 50%;
     margin-right: 1rem;
+}
+
+.comment-text {
+    margin: 1rem;
 }

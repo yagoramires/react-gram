@@ -1,0 +1,22 @@
+.search {
+    width: 90%;
+    margin: 0 auto;
+    padding-top: 2rem;
+}
+
+@media (min-width: 768px) {
+    .search {
+        width: 50%;
+    }
+}
+
+.search h2 {
+    margin: 1rem 0;
+}
+
+.search .btn {
+    display: block;
+    max-width: 80px;
+    text-align: center;
+    margin: .5rem 0 2rem 0;
+}
