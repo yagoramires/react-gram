@@ -19,7 +19,7 @@
 </ul>
 
 <p align="center">
-<img src="./src/assets/readme.gif" title="App demo" alt='App demo' />
+<img src="./frontend/src/assets/readme.gif" title="App demo" alt='App demo' />
 </p>
 
 <h1> Testing this app </h1>
