@@ -4,9 +4,15 @@
     padding-top: 2rem;
 }
 
+@media (min-width: 550px) {
+    .home {
+        width: 450px;
+    }
+}
+
 @media (min-width: 768px) {
     .home {
-        width: 50%;
+        width: 500px;
     }
 }
 
