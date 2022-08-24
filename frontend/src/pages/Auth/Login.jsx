@@ -7,6 +7,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { login, reset } from '../../slices/authSlice';
 
 import './Auth.css';
+import Logo from '../../assets/logo-react-gram.png';
 
 const Login = () => {
   const [email, setEmail] = useState();
@@ -33,7 +34,9 @@ const Login = () => {
 
   return (
     <div className='login'>
-      <h2>ReactGram</h2>
+      <h2>
+        <img src={Logo} alt='logo' className='logo' />
+      </h2>
       <p className='subtitle'>Entre para ver o que há de novo</p>
       <form onSubmit={handleSubmit}>
         <input

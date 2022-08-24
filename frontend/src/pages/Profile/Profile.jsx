@@ -107,6 +107,9 @@ const Profile = () => {
 
     dispatch(publishPhoto(formData));
 
+    setTitle('');
+    setImage('');
+
     setTimeout(() => {
       dispatch(resetMessage());
     }, 2000);
@@ -154,7 +157,12 @@ const Profile = () => {
           <div className='edit-photo hide' ref={editPhotoForm}>
             <p>Editando:</p>
             {editImage && (
-              <img src={`${uploads}/photos/${editImage}`} alt={editTitle} />
+              <div
+                style={{
+                  backgroundImage: `url('${uploads}/photos/${editImage}')`,
+                }}
+                className='photo-item-image edit'
+              ></div>
             )}
             <form onSubmit={handleUpdate}>
               <input
@@ -184,10 +192,12 @@ const Profile = () => {
             photos.map((photo) => (
               <div className='photo' key={photo._id}>
                 {photo.image && (
-                  <img
-                    src={`${uploads}/photos/${photo.image}`}
-                    alt={photo.title}
-                  />
+                  <div
+                    style={{
+                      backgroundImage: `url('${uploads}/photos/${photo.image}')`,
+                    }}
+                    className='photos-container-image'
+                  ></div>
                 )}
                 {id === userAuth._id ? (
                   <div className='actions'>

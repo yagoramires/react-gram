@@ -5,13 +5,17 @@ import { Link } from 'react-router-dom';
 
 const PhotoItem = ({ photo }) => {
   return (
-    <div className='photo-item'>
+    <div className='photo-item-image'>
       {photo.image && (
-        <img src={`${uploads}/photos/${photo.image}`} alt={photo.title} />
+        <div
+          style={{
+            backgroundImage: `url('${uploads}/photos/${photo.image}')`,
+          }}
+          className='photo-item-image'
+        ></div>
       )}
-      <h2>{photo.title}</h2>
+      <h2 className='photo-item-title'>{photo.title}</h2>
       <p className='photo-author'>
-        Publicada por:
         <Link to={`/users/${photo.userId}`}> {photo.userName}</Link>
       </p>
     </div>

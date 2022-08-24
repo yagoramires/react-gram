@@ -49,6 +49,34 @@
     width: 100%;
 }
 
+
+.photos-container-image {
+    width: 100px;
+    min-height: 100px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin: 0 auto;
+}
+
+@media (min-width: 900px) {
+    .photos-container-image {
+        width: 140px;
+        min-height: 140px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .photos-container-image {
+        width: 190px;
+        min-height: 190px;
+    }
+}
+
+.edit {
+    margin: 1rem auto;
+}
+
 .actions {
     display: flex;
     justify-content: space-between;

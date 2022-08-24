@@ -9,6 +9,7 @@ import { useSelector, useDispatch } from 'react-redux';
 // Styles
 import './Auth.css';
 import Message from '../../components/Message/Message';
+import Logo from '../../assets/logo-react-gram.png';
 
 const Register = () => {
   const [name, setName] = useState('');
@@ -40,7 +41,9 @@ const Register = () => {
 
   return (
     <div className='register'>
-      <h2>ReactGram</h2>
+      <h2>
+        <img src={Logo} alt='logo' className='logo' />
+      </h2>
       <p className='subtitle'>Cadastre-se para ver a foto de seus amigos.</p>
       <form onSubmit={handleSubmit}>
         <input

@@ -1,16 +1,32 @@
-.photo-item img {
-    width: 100%;
-}
-
-.home .photo-item h2 {
-    margin-bottom: 2rem;
+.photo-item-title {
+    text-align: left;
+    margin: .5rem 0;
+    font-size: 1.2rem;
+    font-weight: 500;
 }
 
 .photo-author {
+    margin: 1rem;
     text-align: left;
-    font-size: .8rem;
+    font-size: .7rem;
 }
 
 .photo-author a {
     font-weight: bold;
+}
+
+.photo-item-image {
+    width: 330px;
+    min-height: 330px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+    .photo-item-image {
+        width: 500px;
+        min-height: 500px;
+    }
 }

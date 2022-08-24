@@ -15,7 +15,14 @@ body {
 }
 
 .container {
-  min-height: calc(100vh - 140px);
+  min-height: calc(100vh - 115px);
+}
+
+@media (min-width: 768px) {
+  .container {
+    min-height: calc(100vh - 130px);
+  }
+
 }
 
 a {
@@ -59,11 +66,13 @@ input {
   margin-bottom: .6rem;
 }
 
-input::placeholder { 
+input::placeholder {
   color: #AAA;
 }
 
-.btn, button, input[type='submit'] {
+.btn,
+button,
+input[type='submit'] {
   background-color: #0094f6;
   color: #fff;
   border: none;
@@ -74,7 +83,10 @@ input::placeholder {
   opacity: .8;
   font-size: 1rem;
 }
-.btn:hover, button:hover, input[type='submit']:hover {
+
+.btn:hover,
+button:hover,
+input[type='submit']:hover {
   opacity: 1;
 }
 
@@ -82,7 +94,7 @@ input[type='submit'] {
   margin-top: 1rem;
 }
 
-input:disabled { 
+input:disabled {
   cursor: not-allowed;
   background-color: #000;
 }

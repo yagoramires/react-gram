@@ -1,11 +1,37 @@
 .header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  min-width: 100%;
   background-color: #000;
   border-bottom: 1px solid #363636;
   padding: .5rem 1rem;
+  min-height: 65px;
 }
+
+.header div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1120px;
+  margin: 0 auto;
+}
+
+.logo {
+  max-width: 150px
+}
+
+@media (max-width: 768px) {
+  .header {
+    min-height: 100%;
+  }
+
+  .logo {
+    max-width: 100px
+  }
+
+  .nav-form {
+    display: none;
+  }
+}
+
 
 .nav-form {
   position: relative;
