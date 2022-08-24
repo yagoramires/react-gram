@@ -1,11 +1,16 @@
-<h1 > ReactGram </h1>
+<img src="./frontend/src/assets/logo-react-gram.gif" alt='ReactGram' />
 
 <p>In this code challenge i built an fullstack Instagram Clone, with MERN.</p>
+
+<p align="center">
+<img src="./frontend/src/assets/readme.gif" title="App demo" alt='App demo' />
+</p>
 
 <h2> Requirements: </h2>
 <ul>
     <li> Build an instagram clone using <b><i>ReactJS</i></b></li>
-    <li> Build my own API</li>
+    <li> Build an API  with Express and NodeJS</li>
+    <li> Backend built with MongoDB </li>
     <li> The app must do: 
         <ol>
         <li>Register, login and logout users</li>
@@ -13,14 +18,9 @@
         <li>Users can post photos</li>
         <li>Users can delete and update their photos</li>
         <li>Users can like and comment all photos</li>
-        </ol></li>
-    <li> Backend built with MongoDB </li>
-    <li> API built with Express and NodeJS</li>
+        </ol>
+    </li>
 </ul>
-
-<p align="center">
-<img src="./frontend/src/assets/readme.gif" title="App demo" alt='App demo' />
-</p>
 
 <h1> Testing this app </h1>
 
